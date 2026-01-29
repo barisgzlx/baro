@@ -1,65 +1,31 @@
-<script>
-if (localStorage.getItem("login") !== "ok") {
-  window.location.replace("login.html");
-}
-</script>
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Skin Yükleme | AGARZ.COM</title>
+<title>Skin Yükleme</title>
 
 <script>
-if (localStorage.getItem("login") !== "ok") {
-  window.location.href = "login.html";
+if(localStorage.getItem("auth") !== "true"){
+  window.location.replace("login.html");
 }
 </script>
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg,#1a002e,#7b00ff);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: Arial;
-}
-.box {
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
-  border-radius: 15px;
-  width: 350px;
-  text-align: center;
-}
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg,#00c6ff,#7f00ff);
-  color: white;
-  cursor: pointer;
-}
-</style>
 </head>
-
 <body>
 
-<div class="box">
-  <h2>Skin Yükleme Paneli</h2>
-  <p>Buraya sadece giriş yapan müşteri girer</p>
+<h1>Skin Yükleme Paneli</h1>
+<p>Hoş geldin: <b id="u"></b></p>
 
-  <input type="file"><br>
-
-  <button onclick="logout()">Çıkış Yap</button>
-</div>
+<button onclick="logout()">Çıkış Yap</button>
 
 <script>
-function logout() {
-  localStorage.removeItem("login");
-  window.location.href = "index.html";
+document.getElementById("u").innerText =
+  localStorage.getItem("activeUser");
+
+function logout(){
+  localStorage.removeItem("auth");
+  localStorage.removeItem("activeUser");
+  window.location.href = "login.html";
 }
 </script>
 
