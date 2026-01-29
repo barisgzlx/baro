@@ -2,135 +2,97 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>AGARZ.COM | Skin Galeri Merkezi</title>
+<title>AGARZ.COM | Skin Yükleme Merkezi</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial}
+*{
+  box-sizing:border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
 body{
   margin:0;
-  min-height:100vh;
+  height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:white;
+  color:#fff;
+  overflow:hidden;
 }
 
-/* FORM KUTUSU */
-.box{
-  background:rgba(0,0,0,0.6);
-  padding:25px;
-  width:320px;
-  border-radius:12px;
-  box-shadow:0 0 25px rgba(0,0,0,.7);
+/* ARKA PLAN */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at top,#7f00ff,#000),
+    linear-gradient(120deg,#00c6ff,#ff00ff);
+  filter:blur(40px);
+  z-index:-2;
 }
 
-h1{text-align:center;margin-bottom:10px}
-p{text-align:center;font-size:13px;opacity:.8}
-
-input,button{
-  width:100%;
-  padding:10px;
-  margin-top:10px;
-  border-radius:6px;
-  border:none;
+/* GLASS PANEL */
+.card{
+  background:rgba(0,0,0,0.55);
+  border:1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  padding:40px 35px;
+  width:420px;
+  border-radius:20px;
+  text-align:center;
+  box-shadow:0 0 50px rgba(0,0,0,0.9);
+  animation:fade 1.2s ease;
 }
 
-input{background:#111;color:#fff}
-button{
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:none}
+}
+
+h1{
+  margin:0;
+  font-size:28px;
+  letter-spacing:1px;
+}
+
+p{
+  margin:15px 0 30px;
+  font-size:15px;
+  opacity:.85;
+}
+
+/* BUTON */
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:50px;
   background:linear-gradient(90deg,#00c6ff,#ff00ff);
   color:white;
-  cursor:pointer;
-  font-weight:bold;
+  text-decoration:none;
+  font-weight:600;
+  font-size:15px;
+  box-shadow:0 0 20px rgba(255,0,255,.6);
+  transition:.3s;
 }
 
-.links{
-  text-align:center;
-  margin-top:12px;
-}
-.links a{
-  color:#00c6ff;
-  cursor:pointer;
-  font-size:13px;
-  display:block;
-  margin-top:5px;
+.btn:hover{
+  transform:scale(1.05);
+  box-shadow:0 0 35px rgba(0,198,255,.9);
 }
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 ARKA PLAN -->
-<iframe src="gorsel.html"
-style="position:fixed;inset:0;border:none;z-index:-1;"></iframe>
+<div class="card">
+  <h1>AGARZ.COM</h1>
+  <p>Agarz.Com Skin Yükleme Merkezine Hoşgeldiniz</p>
 
-<div class="box">
-
-<h1>AGARZ.COM</h1>
-<p>Skin Galeri Merkezi</p>
-
-<!-- GİRİŞ -->
-<div id="login">
-<input id="luser" placeholder="Kullanıcı Adı">
-<input id="lpass" type="password" placeholder="Şifre">
-<button onclick="login()">Giriş Yap</button>
-
-<div class="links">
-<a onclick="show('register')">Kayıt Ol</a>
-<a onclick="show('password')">Şifre Değiştir</a>
+  <a href="login.html" class="btn">
+    Kayıt Olmak İçin Hemen Tıkla
+  </a>
 </div>
-</div>
-
-<!-- KAYIT -->
-<div id="register" style="display:none">
-<input id="ruser" placeholder="Kullanıcı Adı">
-<input id="rpass" type="password" placeholder="Şifre">
-<button onclick="register()">Kayıt Ol</button>
-<div class="links">
-<a onclick="show('login')">Geri Dön</a>
-</div>
-</div>
-
-<!-- ŞİFRE -->
-<div id="password" style="display:none">
-<input id="puser" placeholder="Kullanıcı Adı">
-<input id="pnew" type="password" placeholder="Yeni Şifre">
-<button onclick="changePass()">Şifreyi Değiştir</button>
-<div class="links">
-<a onclick="show('login')">Geri Dön</a>
-</div>
-</div>
-
-</div>
-
-<script>
-function show(id){
-  login.style.display="none";
-  register.style.display="none";
-  password.style.display="none";
-  document.getElementById(id).style.display="block";
-}
-
-function register(){
-  if(!ruser.value || !rpass.value) return alert("Boş bırakma");
-  localStorage.setItem(ruser.value,rpass.value);
-  alert("Kayıt başarılı");
-  show("login");
-}
-
-function login(){
-  if(localStorage.getItem(luser.value)===lpass.value){
-    location.href="customer.html";
-  }else alert("Hatalı giriş");
-}
-
-function changePass(){
-  if(!localStorage.getItem(puser.value))
-    return alert("Kullanıcı yok");
-  localStorage.setItem(puser.value,pnew.value);
-  alert("Şifre değiştirildi");
-  show("login");
-}
-</script>
 
 </body>
 </html>
