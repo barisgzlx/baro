@@ -1,77 +1,22 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>AGARZ.COM | Skin Galeri Merkezi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
-}
-
 body{
+  margin:0;
   height:100vh;
-  background:
-    linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.65)),
-    url("arkaplan.jpg");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
 }
-
-.box{
-  text-align:center;
-  padding:60px;
-  border-radius:20px;
-  backdrop-filter: blur(10px);
-}
-
-h1{
-  font-size:48px;
-  letter-spacing:3px;
-  margin-bottom:12px;
-}
-
-p{
-  opacity:.9;
-  margin-bottom:40px;
-  font-size:16px;
-}
-
-.btn{
-  padding:16px 50px;
-  border:none;
-  border-radius:40px;
-  font-size:17px;
-  cursor:pointer;
-  color:#fff;
-  background:linear-gradient(135deg,#00f0ff,#c300ff);
-  transition:.3s;
-}
-
-.btn:hover{
-  transform:scale(1.08);
+.overlay{
+  position:fixed;
+  inset:0;
+  background:url("https://picsum.photos/1920/1080?blur=2") center/cover;
+  opacity:0.25;
 }
 </style>
 </head>
-
 <body>
-
-<div class="box">
-  <h1>AGARZ.COM</h1>
-  <p>Skin Galeri Merkezi</p>
-
-  <button class="btn" onclick="window.location.href='index.html'">
-    Müşteri Girişi
-  </button>
-</div>
-
+<div class="overlay"></div>
 </body>
 </html>
