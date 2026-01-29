@@ -1,21 +1,39 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Kayıt Ol | AGARZ.COM</title>
+</head>
+<body>
+
+<h2>Kayıt Ol</h2>
+
+<input type="text" id="username" placeholder="Kullanıcı Adı"><br><br>
+<input type="password" id="password" placeholder="Şifre"><br><br>
+
+<button onclick="kayitOl()">Kayıt Ol</button>
+
 <script>
 function kayitOl() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
+    const user = document.getElementById("username").value.trim();
+    const pass = document.getElementById("password").value.trim();
 
-    if (!user || !pass) {
-        alert("Lütfen tüm alanları doldurun!");
+    if (user === "" || pass === "") {
+        alert("Alanlar boş olamaz!");
         return;
     }
 
-    const kontrol = localStorage.getItem("user_" + user);
-    if (kontrol) {
-        alert("Bu kullanıcı adı zaten kayıtlı!");
+    if (localStorage.getItem("user_" + user)) {
+        alert("Bu kullanıcı zaten var!");
         return;
     }
 
     localStorage.setItem("user_" + user, pass);
-    alert("Kayıt başarılı! Giriş yapabilirsiniz.");
+
+    alert("Kayıt başarılı!");
     window.location.href = "login.html";
 }
 </script>
+
+</body>
+</html>
