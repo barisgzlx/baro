@@ -3,38 +3,53 @@
 <head>
 <meta charset="UTF-8">
 <title>Kayıt Ol</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#1e003c,#6a00ff);
+  font-family:Arial;
+}
+.box{
+  background:#16002e;
+  padding:40px;
+  border-radius:15px;
+  width:320px;
+  text-align:center;
+  color:white;
+}
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#00ffcc,#7f00ff);
+  color:white;
+  font-size:16px;
+}
+</style>
 </head>
 <body>
 
-<h2>Kayıt Ol</h2>
-<input id="user" placeholder="Kullanıcı adı">
-<input id="pass" type="password" placeholder="Şifre">
-<button onclick="register()">Kayıt Ol</button>
+<div class="box">
+  <h2>Kayıt Ol</h2>
 
-<script>
-function register(){
-  const user = document.getElementById("user").value;
-  const pass = document.getElementById("pass").value;
+  <input id="username" placeholder="Kullanıcı Adı">
+  <input id="password" type="password" placeholder="Şifre">
 
-  if(!user || !pass){
-    alert("Boş bırakma");
-    return;
-  }
+  <button onclick="kayitOl()">KAYIT OL</button>
+</div>
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  if(users.find(u => u.user === user)){
-    alert("Bu kullanıcı zaten var");
-    return;
-  }
-
-  users.push({user, pass});
-  localStorage.setItem("users", JSON.stringify(users));
-
-  alert("Kayıt başarılı");
-  window.location.href = "login.html";
-}
-</script>
-
+<script src="auth.js"></script>
 </body>
 </html>
