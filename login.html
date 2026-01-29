@@ -5,66 +5,73 @@
 <title>Müşteri Girişi | AGARZ.COM</title>
 
 <style>
-*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-
-body{
-  margin:0;
-  height:100vh;
-  background:radial-gradient(circle at top,#3a006a,#0a0014);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  color:#fff;
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
-.login-box{
-  width:340px;
-  padding:35px;
-  background:rgba(0,0,0,.55);
-  border-radius:16px;
-  text-align:center;
-  box-shadow:0 0 40px rgba(170,0,255,.4);
+body {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at top, #7b00ff, #1a002e);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.login-box h1{
-  margin-bottom:5px;
-  letter-spacing:1px;
+.login-box {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  width: 320px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(0,0,0,0.6);
 }
 
-.login-box p{
-  font-size:14px;
-  opacity:.8;
-  margin-bottom:20px;
+.login-box h1 {
+  color: #fff;
+  margin-bottom: 5px;
 }
 
-input{
-  width:100%;
-  padding:12px;
-  margin:10px 0;
-  border:none;
-  border-radius:8px;
+.login-box p {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 25px;
 }
 
-button{
-  width:100%;
-  padding:12px;
-  margin-top:15px;
-  border:none;
-  border-radius:20px;
-  background:linear-gradient(90deg,#00d2ff,#7a00ff);
-  color:white;
-  font-weight:bold;
-  cursor:pointer;
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
 }
 
-.links{
-  margin-top:15px;
-  font-size:13px;
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  background: linear-gradient(90deg,#00c6ff,#7f00ff);
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
 }
 
-.links a{
-  color:#00d2ff;
-  text-decoration:none;
+.login-box button:hover {
+  opacity: 0.9;
+}
+
+.links {
+  margin-top: 15px;
+  font-size: 13px;
+}
+
+.links a {
+  color: #6ecbff;
+  text-decoration: none;
+  margin: 0 5px;
 }
 </style>
 </head>
@@ -78,26 +85,24 @@ button{
   <input type="text" id="username" placeholder="Kullanıcı Adı">
   <input type="password" id="password" placeholder="Şifre">
 
-  <button onclick="girisYap()">GİRİŞ YAP</button>
+  <button onclick="login()">GİRİŞ YAP</button>
 
   <div class="links">
     <a href="register.html">Kayıt Ol</a> |
-    <a href="password.html">Şifre Değiştir</a>
+    <a href="sifre.html">Şifre Değiştir</a>
   </div>
 </div>
 
 <script>
-function girisYap(){
-  const u = document.getElementById("username").value;
-  const p = document.getElementById("password").value;
+function login() {
+  const user = document.getElementById("username").value;
+  const pass = document.getElementById("password").value;
 
-  const kayitliUser = localStorage.getItem("username");
-  const kayitliPass = localStorage.getItem("password");
-
-  if(u === kayitliUser && p === kayitliPass){
-    window.location.href = "customer.html";
+  // ÖRNEK kontrol (şimdilik sabit)
+  if (user === "admin7" && pass === "1234") {
+    window.location.href = "panel.html"; // 🔥 ÖNEMLİ
   } else {
-    alert("Kullanıcı adı veya şifre hatalı!");
+    alert("Kullanıcı adı veya şifre yanlış");
   }
 }
 </script>
