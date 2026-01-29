@@ -2,111 +2,37 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Müşteri Girişi | AGARZ.COM</title>
-
-<style>
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
-
-body {
-  margin: 0;
-  height: 100vh;
-  background: radial-gradient(circle at top, #7b00ff, #1a002e);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-box {
-  background: rgba(0,0,0,0.6);
-  padding: 40px;
-  width: 320px;
-  border-radius: 16px;
-  text-align: center;
-  box-shadow: 0 0 40px rgba(0,0,0,0.6);
-}
-
-.login-box h1 {
-  color: #fff;
-  margin-bottom: 5px;
-}
-
-.login-box p {
-  color: #ccc;
-  font-size: 14px;
-  margin-bottom: 25px;
-}
-
-.login-box input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: none;
-  border-radius: 8px;
-  outline: none;
-}
-
-.login-box button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 25px;
-  background: linear-gradient(90deg,#00c6ff,#7f00ff);
-  color: white;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.login-box button:hover {
-  opacity: 0.9;
-}
-
-.links {
-  margin-top: 15px;
-  font-size: 13px;
-}
-
-.links a {
-  color: #6ecbff;
-  text-decoration: none;
-  margin: 0 5px;
-}
-</style>
+<title>Giriş Yap</title>
 </head>
-
 <body>
 
-<div class="login-box">
-  <h1>AGARZ.COM</h1>
-  <p>Müşteri Giriş Paneli</p>
+<h2>Giriş</h2>
+<input id="user" placeholder="Kullanıcı adı">
+<input id="pass" type="password" placeholder="Şifre">
+<button onclick="login()">Giriş Yap</button>
 
-  <input type="text" id="username" placeholder="Kullanıcı Adı">
-  <input type="password" id="password" placeholder="Şifre">
-
-  <button onclick="login()">GİRİŞ YAP</button>
-
-  <div class="links">
-    <a href="register.html">Kayıt Ol</a> |
-    <a href="sifre.html">Şifre Değiştir</a>
-  </div>
-</div>
+<p>
+<a href="register.html">Kayıt Ol</a>
+</p>
 
 <script>
-function login() {
-  const user = document.getElementById("username").value;
-  const pass = document.getElementById("password").value;
+function login(){
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
 
-  if (user === "admin7" && pass === "1234") {
-    localStorage.setItem("login", "ok");   // 🔒 giriş kaydı
-    window.location.href = "skin.html";   // 🎯 MÜŞTERİ SAYFASI
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+
+  let found = users.find(u => u.user === user && u.pass === pass);
+
+  if(found){
+    localStorage.setItem("auth", "true");
+    localStorage.setItem("activeUser", user);
+    window.location.href = "skin.html";
   } else {
-    alert("Hatalı giriş");
+    alert("Kullanıcı adı veya şifre hatalı");
   }
 }
 </script>
-
 
 </body>
 </html>
