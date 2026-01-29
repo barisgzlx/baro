@@ -2,36 +2,146 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Müşteri Girişi</title>
+  <title>Müşteri Girişi | Agarz Skin Galerisi</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .login-box {
+      background: rgba(0,0,0,0.65);
+      padding: 30px;
+      border-radius: 12px;
+      width: 340px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: none;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #00d4ff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .links {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .links a {
+      color: #00d4ff;
+      text-decoration: none;
+      margin: 0 5px;
+      cursor: pointer;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
 
-<h2>🔐 Müşteri Girişi</h2>
+  <div class="login-box">
+    <h1>🔐 Müşteri Girişi</h1>
 
-<input id="username" placeholder="Kullanıcı adı"><br><br>
-<input id="password" type="password" placeholder="Şifre"><br><br>
+    <input type="text" id="username" placeholder="Kullanıcı adı">
+    <input type="password" id="password" placeholder="Şifre">
 
-<button onclick="login()">Giriş Yap</button>
-<br><br>
+    <button onclick="girisYap()">Giriş Yap</button>
 
-<a href="register.html">Kayıt Ol</a> |
-<a href="password.html">Şifre Değiştir</a>
+    <div class="links">
+      <a onclick="kayitOl()">Kayıt Ol</a> |
+      <a onclick="sifreDegistir()">Şifre Değiştir</a>
+    </div>
+  </div>
 
-<script>
-function login() {
-  const u = username.value;
-  const p = password.value;
+  <script>
+    function girisYap() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value;
 
-  const users = JSON.parse(localStorage.getItem("users")) || {};
+      let users = JSON.parse(localStorage.getItem("users")) || {};
 
-  if (users[u] && users[u] === p) {
-    localStorage.setItem("activeUser", u);
-    window.location.href = "customer.html";
-  } else {
-    alert("Hatalı kullanıcı adı veya şifre");
-  }
-}
-</script>
+      if (users[user] && users[user] === pass) {
+        localStorage.setItem("aktifKullanici", user);
+        window.location.href = "customer.html";
+      } else {
+        alert("Kullanıcı adı veya şifre hatalı ❌");
+      }
+    }
+
+    function kayitOl() {
+      const user = prompt("Kullanıcı adı gir:");
+      if (!user) return;
+
+      const pass = prompt("Şifre gir:");
+      if (!pass) return;
+
+      let users = JSON.parse(localStorage.getItem("users")) || {};
+
+      if (users[user]) {
+        alert("Bu kullanıcı zaten kayıtlı ❌");
+        return;
+      }
+
+      users[user] = pass;
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Kayıt başarılı ✅ Giriş yapabilirsin");
+    }
+
+    function sifreDegistir() {
+      const user = prompt("Kullanıcı adını gir:");
+      if (!user) return;
+
+      let users = JSON.parse(localStorage.getItem("users")) || {};
+
+      if (!users[user]) {
+        alert("Kullanıcı bulunamadı ❌");
+        return;
+      }
+
+      const yeniSifre = prompt("Yeni şifre:");
+      if (!yeniSifre) return;
+
+      users[user] = yeniSifre;
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Şifre başarıyla değiştirildi ✅");
+    }
+  </script>
 
 </body>
 </html>
