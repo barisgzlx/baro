@@ -2,35 +2,37 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Kayıt Ol | AGARZ.COM</title>
+<title>Kayıt Ol</title>
 </head>
 <body>
 
 <h2>Kayıt Ol</h2>
-
-<input type="text" id="username" placeholder="Kullanıcı Adı"><br><br>
-<input type="password" id="password" placeholder="Şifre"><br><br>
-
-<button onclick="kayitOl()">Kayıt Ol</button>
+<input id="user" placeholder="Kullanıcı adı">
+<input id="pass" type="password" placeholder="Şifre">
+<button onclick="register()">Kayıt Ol</button>
 
 <script>
-function kayitOl() {
-    const user = document.getElementById("username").value.trim();
-    const pass = document.getElementById("password").value.trim();
+function register(){
+  const user = document.getElementById("user").value;
+  const pass = document.getElementById("pass").value;
 
-    if (user === "" || pass === "") {
-        alert("Boş alan bırakma!");
-        return;
-    }
+  if(!user || !pass){
+    alert("Boş bırakma");
+    return;
+  }
 
-    if (localStorage.getItem("user_" + user)) {
-        alert("Bu kullanıcı zaten kayıtlı!");
-        return;
-    }
+  let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    localStorage.setItem("user_" + user, pass);
-    alert("Kayıt başarılı!");
-    window.location.href = "login.html";
+  if(users.find(u => u.user === user)){
+    alert("Bu kullanıcı zaten var");
+    return;
+  }
+
+  users.push({user, pass});
+  localStorage.setItem("users", JSON.stringify(users));
+
+  alert("Kayıt başarılı");
+  window.location.href = "login.html";
 }
 </script>
 
