@@ -1,1 +1,101 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Paneli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .panel {
+      background: rgba(0, 0, 0, 0.55);
+      padding: 40px;
+      width: 100%;
+      max-width: 420px;
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      margin-top: 0;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    p {
+      text-align: center;
+      opacity: 0.85;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 6px;
+      background: #00c6ff;
+      background: linear-gradient(90deg, #00c6ff, #0072ff);
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+
+    .footer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="panel">
+    <h1>Admin Paneli</h1>
+    <p>Yetkili giriş ekranı</p>
+
+    <!-- Demo alanı -->
+    <input type="text" placeholder="Kullanıcı Adı (demo)">
+    <input type="password" placeholder="Şifre (demo)">
+
+    <button onclick="demoGiris()">Giriş Yap</button>
+
+    <div class="footer">
+      © 2026 • barisgzl
+    </div>
+  </div>
+
+  <script>
+    function demoGiris() {
+      alert("Demo paneldir.\nSunucu bağlantısı yok.");
+    }
+  </script>
+
+</body>
+</html>
 
