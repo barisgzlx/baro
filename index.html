@@ -2,12 +2,36 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Agarz Skin Galerisi</title>
+  <title>Müşteri Girişi</title>
 </head>
 <body>
-  <h1>🎨 Agarz Skin Galerisi</h1>
-  <p>Özel skinlerimizi keşfet!</p>
 
-  <a href="login.html">Müşteri Girişi</a>
+<h2>🔐 Müşteri Girişi</h2>
+
+<input id="username" placeholder="Kullanıcı adı"><br><br>
+<input id="password" type="password" placeholder="Şifre"><br><br>
+
+<button onclick="login()">Giriş Yap</button>
+<br><br>
+
+<a href="register.html">Kayıt Ol</a> |
+<a href="password.html">Şifre Değiştir</a>
+
+<script>
+function login() {
+  const u = username.value;
+  const p = password.value;
+
+  const users = JSON.parse(localStorage.getItem("users")) || {};
+
+  if (users[u] && users[u] === p) {
+    localStorage.setItem("activeUser", u);
+    window.location.href = "customer.html";
+  } else {
+    alert("Hatalı kullanıcı adı veya şifre");
+  }
+}
+</script>
+
 </body>
 </html>
