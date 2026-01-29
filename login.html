@@ -2,37 +2,59 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>Giriş Yap</title>
+<title>AGARZ.COM | Giriş</title>
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:linear-gradient(135deg,#2b0057,#7a00ff);
+  font-family:Arial;
+}
+.box{
+  background:#1b0036;
+  padding:40px;
+  border-radius:15px;
+  width:320px;
+  text-align:center;
+  color:white;
+}
+input{
+  width:100%;
+  padding:12px;
+  margin:10px 0;
+  border:none;
+  border-radius:8px;
+}
+button{
+  width:100%;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(90deg,#00c6ff,#7f00ff);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+a{color:#8fd3ff;text-decoration:none;font-size:13px;}
+</style>
 </head>
 <body>
 
-<h2>Giriş</h2>
-<input id="user" placeholder="Kullanıcı adı">
-<input id="pass" type="password" placeholder="Şifre">
-<button onclick="login()">Giriş Yap</button>
+<div class="box">
+  <h2>AGARZ.COM</h2>
+  <p>Müşteri Giriş Paneli</p>
 
-<p>
-<a href="register.html">Kayıt Ol</a>
-</p>
+  <input id="username" placeholder="Kullanıcı Adı">
+  <input id="password" type="password" placeholder="Şifre">
 
-<script>
-function login(){
-  const user = document.getElementById("user").value;
-  const pass = document.getElementById("pass").value;
+  <button onclick="girisYap()">GİRİŞ YAP</button>
+  <br><br>
+  <a href="register.html">Kayıt Ol</a>
+</div>
 
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  let found = users.find(u => u.user === user && u.pass === pass);
-
-  if(found){
-    localStorage.setItem("auth", "true");
-    localStorage.setItem("activeUser", user);
-    window.location.href = "skin.html";
-  } else {
-    alert("Kullanıcı adı veya şifre hatalı");
-  }
-}
-</script>
-
+<script src="auth.js"></script>
 </body>
 </html>
