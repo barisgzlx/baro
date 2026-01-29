@@ -1,37 +1,21 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Kayıt Ol</title>
-</head>
-<body>
-
-<h2>📝 Kayıt Ol</h2>
-
-<input id="username" placeholder="Kullanıcı adı"><br><br>
-<input id="password" type="password" placeholder="Şifre"><br><br>
-
-<button onclick="register()">Kayıt Ol</button>
-
 <script>
-function register() {
-  const u = username.value;
-  const p = password.value;
+function kayitOl() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
 
-  let users = JSON.parse(localStorage.getItem("users")) || {};
+    if (!user || !pass) {
+        alert("Lütfen tüm alanları doldurun!");
+        return;
+    }
 
-  if (users[u]) {
-    alert("Bu kullanıcı zaten var");
-    return;
-  }
+    const kontrol = localStorage.getItem("user_" + user);
+    if (kontrol) {
+        alert("Bu kullanıcı adı zaten kayıtlı!");
+        return;
+    }
 
-  users[u] = p;
-  localStorage.setItem("users", JSON.stringify(users));
-
-  alert("Kayıt başarılı");
-  window.location.href = "index.html";
+    localStorage.setItem("user_" + user, pass);
+    alert("Kayıt başarılı! Giriş yapabilirsiniz.");
+    window.location.href = "login.html";
 }
 </script>
-
-</body>
-</html>
