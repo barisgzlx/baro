@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>AGARZ.COM | Skin Galeri Merkezi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body{
+  height:100vh;
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.6)),
+    url("arkaplan.jpg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+
+.box{
+  text-align:center;
+  padding:50px;
+  border-radius:18px;
+  backdrop-filter: blur(8px);
+}
+
+h1{
+  font-size:46px;
+  letter-spacing:2px;
+  margin-bottom:10px;
+}
+
+p{
+  opacity:.85;
+  margin-bottom:35px;
+}
+
+.btn{
+  padding:15px 45px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,#00f0ff,#c300ff);
+  transition:.3s;
+}
+
+.btn:hover{
+  transform:scale(1.06);
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h1>AGARZ.COM</h1>
+  <p>Skin Galeri Merkezi</p>
+
+  <button class="btn" onclick="window.location.href='login.html'">
+    Müşteri Girişi
+  </button>
+</div>
+
+</body>
+</html>
