@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Müşteri Girişi</title>
+</head>
+<body>
+  <h2>Müşteri Girişi</h2>
+
+  <input type="text" id="user" placeholder="Kullanıcı adı"><br><br>
+  <input type="password" id="pass" placeholder="Şifre"><br><br>
+  <button onclick="login()">Giriş Yap</button>
+
+  <script>
+    function login() {
+      const u = document.getElementById("user").value;
+      const p = document.getElementById("pass").value;
+
+      if (u === "musteri" && p === "1234") {
+        window.location.href = "customer.html";
+      } else {
+        alert("Hatalı müşteri bilgileri");
+      }
+    }
+  </script>
+</body>
+</html>
