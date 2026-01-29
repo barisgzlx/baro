@@ -1,147 +1,80 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Müşteri Girişi | Agarz Skin Galerisi</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>AGARZ.COM | Skin Galeri Merkezi</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
 
-    .login-box {
-      background: rgba(0,0,0,0.65);
-      padding: 30px;
-      border-radius: 12px;
-      width: 340px;
-      box-shadow: 0 0 25px rgba(0,0,0,0.6);
-      text-align: center;
-    }
+body {
+  height: 100vh;
+  background: 
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+    url("arkaplan.jpg"); /* 🔥 BURAYA FOTOĞRAF */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
 
-    h1 {
-      margin-bottom: 20px;
-    }
+.center-box {
+  text-align: center;
+  padding: 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(6px);
+}
 
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: none;
-      font-size: 15px;
-    }
+h1 {
+  font-size: 48px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
 
-    button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      border: none;
-      border-radius: 6px;
-      background: #00d4ff;
-      font-size: 16px;
-      cursor: pointer;
-    }
+h2 {
+  font-size: 18px;
+  font-weight: 300;
+  opacity: 0.85;
+  margin-bottom: 35px;
+}
 
-    button:hover {
-      opacity: 0.85;
-    }
+.enter-btn {
+  padding: 14px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: linear-gradient(135deg, #00f0ff, #c300ff);
+  color: #fff;
+  transition: 0.3s;
+}
 
-    .links {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-
-    .links a {
-      color: #00d4ff;
-      text-decoration: none;
-      margin: 0 5px;
-      cursor: pointer;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-  </style>
+.enter-btn:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+</style>
 </head>
+
 <body>
 
-  <div class="login-box">
-    <h1>🔐 Müşteri Girişi</h1>
+<div class="center-box">
+  <h1>AGARZ.COM</h1>
+  <h2>Skin Galeri Merkezi</h2>
 
-    <input type="text" id="username" placeholder="Kullanıcı adı">
-    <input type="password" id="password" placeholder="Şifre">
-
-    <button onclick="girisYap()">Giriş Yap</button>
-
-    <div class="links">
-      <a onclick="kayitOl()">Kayıt Ol</a> |
-      <a onclick="sifreDegistir()">Şifre Değiştir</a>
-    </div>
-  </div>
-
-  <script>
-    function girisYap() {
-      const user = document.getElementById("username").value.trim();
-      const pass = document.getElementById("password").value;
-
-      let users = JSON.parse(localStorage.getItem("users")) || {};
-
-      if (users[user] && users[user] === pass) {
-        localStorage.setItem("aktifKullanici", user);
-        window.location.href = "customer.html";
-      } else {
-        alert("Kullanıcı adı veya şifre hatalı ❌");
-      }
-    }
-
-    function kayitOl() {
-      const user = prompt("Kullanıcı adı gir:");
-      if (!user) return;
-
-      const pass = prompt("Şifre gir:");
-      if (!pass) return;
-
-      let users = JSON.parse(localStorage.getItem("users")) || {};
-
-      if (users[user]) {
-        alert("Bu kullanıcı zaten kayıtlı ❌");
-        return;
-      }
-
-      users[user] = pass;
-      localStorage.setItem("users", JSON.stringify(users));
-
-      alert("Kayıt başarılı ✅ Giriş yapabilirsin");
-    }
-
-    function sifreDegistir() {
-      const user = prompt("Kullanıcı adını gir:");
-      if (!user) return;
-
-      let users = JSON.parse(localStorage.getItem("users")) || {};
-
-      if (!users[user]) {
-        alert("Kullanıcı bulunamadı ❌");
-        return;
-      }
-
-      const yeniSifre = prompt("Yeni şifre:");
-      if (!yeniSifre) return;
-
-      users[user] = yeniSifre;
-      localStorage.setItem("users", JSON.stringify(users));
-
-      alert("Şifre başarıyla değiştirildi ✅");
-    }
-  </script>
+  <!-- İstersen buradan login.html'ye yollar -->
+  <button class="enter-btn" onclick="window.location.href='login.html'">
+    Sisteme Giriş
+  </button>
+</div>
 
 </body>
 </html>
