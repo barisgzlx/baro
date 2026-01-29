@@ -100,21 +100,25 @@
     <footer>© 2026 - barisgzl</footer>
   </div>
 
-  <script>
-    function login() {
-      const user = document.getElementById("username").value;
-      const pass = document.getElementById("password").value;
-      const error = document.getElementById("error");
+<script>
+  function login() {
+    const user = document.getElementById("username").value;
+    const pass = document.getElementById("password").value;
+    const error = document.getElementById("error");
 
-      if (user === "barisgzl" && pass === "Baro1453") {
-        alert("Giriş başarılı! Hoş geldin barisgzl 👑");
-        // İstersen buraya yönlendirme ekleriz
-        // window.location.href = "panel.html";
-      } else {
-        error.style.display = "block";
-      }
+    error.style.display = "none";
+
+    if (user === "barisgzl" && pass === "Baro1453") {
+      alert("Giriş başarılı! Hoş geldin barisgzl 👑");
+
+      // İstersen buraya yönlendirme koyarız
+      // window.location.href = "panel.html";
+
+    } else {
+      error.style.display = "block";
     }
-  </script>
+  }
+</script>
 
 </body>
 </html>
