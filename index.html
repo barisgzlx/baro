@@ -3,78 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <title>AGARZ.COM | Skin Galeri Merkezi</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+*{box-sizing:border-box;font-family:Arial}
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
 }
 
-body {
-  height: 100vh;
-  background: 
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
-    url("arkaplan.jpg"); /* 🔥 BURAYA FOTOĞRAF */
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+/* FORM KUTUSU */
+.box{
+  background:rgba(0,0,0,0.6);
+  padding:25px;
+  width:320px;
+  border-radius:12px;
+  box-shadow:0 0 25px rgba(0,0,0,.7);
 }
 
-.center-box {
-  text-align: center;
-  padding: 40px;
-  border-radius: 16px;
-  backdrop-filter: blur(6px);
+h1{text-align:center;margin-bottom:10px}
+p{text-align:center;font-size:13px;opacity:.8}
+
+input,button{
+  width:100%;
+  padding:10px;
+  margin-top:10px;
+  border-radius:6px;
+  border:none;
 }
 
-h1 {
-  font-size: 48px;
-  letter-spacing: 2px;
-  margin-bottom: 15px;
+input{background:#111;color:#fff}
+button{
+  background:linear-gradient(90deg,#00c6ff,#ff00ff);
+  color:white;
+  cursor:pointer;
+  font-weight:bold;
 }
 
-h2 {
-  font-size: 18px;
-  font-weight: 300;
-  opacity: 0.85;
-  margin-bottom: 35px;
+.links{
+  text-align:center;
+  margin-top:12px;
 }
-
-.enter-btn {
-  padding: 14px 40px;
-  font-size: 16px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  background: linear-gradient(135deg, #00f0ff, #c300ff);
-  color: #fff;
-  transition: 0.3s;
-}
-
-.enter-btn:hover {
-  transform: scale(1.05);
-  opacity: 0.9;
+.links a{
+  color:#00c6ff;
+  cursor:pointer;
+  font-size:13px;
+  display:block;
+  margin-top:5px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="center-box">
-  <h1>AGARZ.COM</h1>
-  <h2>Skin Galeri Merkezi</h2>
+<!-- 🔥 ARKA PLAN -->
+<iframe src="gorsel.html"
+style="position:fixed;inset:0;border:none;z-index:-1;"></iframe>
 
-  <!-- İstersen buradan login.html'ye yollar -->
-  <button class="enter-btn" onclick="window.location.href='login.html'">
-    Sisteme Giriş
-  </button>
+<div class="box">
+
+<h1>AGARZ.COM</h1>
+<p>Skin Galeri Merkezi</p>
+
+<!-- GİRİŞ -->
+<div id="login">
+<input id="luser" placeholder="Kullanıcı Adı">
+<input id="lpass" type="password" placeholder="Şifre">
+<button onclick="login()">Giriş Yap</button>
+
+<div class="links">
+<a onclick="show('register')">Kayıt Ol</a>
+<a onclick="show('password')">Şifre Değiştir</a>
 </div>
+</div>
+
+<!-- KAYIT -->
+<div id="register" style="display:none">
+<input id="ruser" placeholder="Kullanıcı Adı">
+<input id="rpass" type="password" placeholder="Şifre">
+<button onclick="register()">Kayıt Ol</button>
+<div class="links">
+<a onclick="show('login')">Geri Dön</a>
+</div>
+</div>
+
+<!-- ŞİFRE -->
+<div id="password" style="display:none">
+<input id="puser" placeholder="Kullanıcı Adı">
+<input id="pnew" type="password" placeholder="Yeni Şifre">
+<button onclick="changePass()">Şifreyi Değiştir</button>
+<div class="links">
+<a onclick="show('login')">Geri Dön</a>
+</div>
+</div>
+
+</div>
+
+<script>
+function show(id){
+  login.style.display="none";
+  register.style.display="none";
+  password.style.display="none";
+  document.getElementById(id).style.display="block";
+}
+
+function register(){
+  if(!ruser.value || !rpass.value) return alert("Boş bırakma");
+  localStorage.setItem(ruser.value,rpass.value);
+  alert("Kayıt başarılı");
+  show("login");
+}
+
+function login(){
+  if(localStorage.getItem(luser.value)===lpass.value){
+    location.href="customer.html";
+  }else alert("Hatalı giriş");
+}
+
+function changePass(){
+  if(!localStorage.getItem(puser.value))
+    return alert("Kullanıcı yok");
+  localStorage.setItem(puser.value,pnew.value);
+  alert("Şifre değiştirildi");
+  show("login");
+}
+</script>
 
 </body>
 </html>
