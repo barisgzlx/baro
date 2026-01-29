@@ -3,30 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <title>Müşteri Paneli</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .panel {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .username {
+      font-weight: bold;
+      color: #00d4ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .btn-change {
+      background: #00d4ff;
+      color: #000;
+    }
+
+    .btn-logout {
+      background: #ff4d4d;
+      color: #fff;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+  </style>
 </head>
 <body>
 
-<h1>👤 Müşteri Paneli</h1>
-<p id="user"></p>
+  <div class="panel">
+    <h1>👤 Müşteri Paneli</h1>
+    <p>Hoş geldin <span class="username" id="user"></span></p>
 
-<a href="password.html">Şifre Değiştir</a><br><br>
-<button onclick="logout()">Çıkış Yap</button>
+    <button class="btn-change" onclick="sifreDegistir()">🔑 Şifre Değiştir</button>
+    <button class="btn-logout" onclick="cikis()">🚪 Çıkış Yap</button>
+  </div>
 
-<script>
-const activeUser = localStorage.getItem("activeUser");
+  <script>
+    const aktifKullanici = localStorage.getItem("aktifKullanici");
 
-if (!activeUser) {
-  window.location.href = "index.html";
-}
+    if (!aktifKullanici) {
+      window.location.href = "index.html";
+    }
 
-document.getElementById("user").innerText =
-  "Hoş geldin: " + activeUser;
+    document.getElementById("user").innerText = aktifKullanici;
 
-function logout() {
-  localStorage.removeItem("activeUser");
-  window.location.href = "index.html";
-}
-</script>
+    function sifreDegistir() {
+      const yeniSifre = prompt("Yeni şifreni gir:");
+      if (!yeniSifre) return;
+
+      let users = JSON.parse(localStorage.getItem("users")) || {};
+
+      users[aktifKullanici] = yeniSifre;
+      localStorage.setItem("users", JSON.stringify(users));
+
+      alert("Şifre başarıyla değiştirildi ✅");
+    }
+
+    function cikis() {
+      localStorage.removeItem("aktifKullanici");
+      window.location.href = "index.html";
+    }
+  </script>
 
 </body>
 </html>
