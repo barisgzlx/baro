@@ -2,123 +2,12 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Admin Paneli</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    body {
-      margin: 0;
-      height: 100vh;
-      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .login-box {
-      background: rgba(0, 0, 0, 0.55);
-      padding: 35px;
-      width: 340px;
-      border-radius: 14px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-      text-align: center;
-      color: #fff;
-    }
-
-    .login-box h1 {
-      margin-bottom: 8px;
-      font-size: 26px;
-      letter-spacing: 1px;
-    }
-
-    .login-box p {
-      margin-bottom: 25px;
-      font-size: 13px;
-      opacity: 0.8;
-    }
-
-    .login-box input {
-      width: 100%;
-      padding: 12px;
-      margin-bottom: 15px;
-      border: none;
-      border-radius: 8px;
-      outline: none;
-      font-size: 14px;
-    }
-
-    .login-box button {
-      width: 100%;
-      padding: 12px;
-      background: #00b4ff;
-      border: none;
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: bold;
-      color: #fff;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .login-box button:hover {
-      background: #0090cc;
-    }
-
-    .error {
-      margin-top: 12px;
-      color: #ff6b6b;
-      font-size: 13px;
-      display: none;
-    }
-
-    footer {
-      margin-top: 18px;
-      font-size: 12px;
-      opacity: 0.6;
-    }
-  </style>
+  <title>Agarz Skin Galerisi</title>
 </head>
-
 <body>
+  <h1>🎨 Agarz Skin Galerisi</h1>
+  <p>Özel skinlerimizi keşfet!</p>
 
-  <div class="login-box">
-    <h1>Admin Paneli</h1>
-    <p>Yetkili giriş ekranı</p>
-
-    <input type="text" id="username" placeholder="Kullanıcı Adı">
-    <input type="password" id="password" placeholder="Şifre">
-
-    <button onclick="login()">Giriş Yap</button>
-
-    <div class="error" id="error">Kullanıcı adı veya şifre hatalı</div>
-
-    <footer>© 2026 - barisgzl</footer>
-  </div>
-
-<script>
-  function login() {
-    const user = document.getElementById("username").value;
-    const pass = document.getElementById("password").value;
-    const error = document.getElementById("error");
-
-    error.style.display = "none";
-
-    if (user === "barisgzl" && pass === "Baro1453") {
-      alert("Giriş başarılı! Hoş geldin barisgzl 👑");
-
-      // İstersen buraya yönlendirme koyarız
-      // window.location.href = "panel.html";
-
-    } else {
-      error.style.display = "block";
-    }
-  }
-</script>
-
+  <a href="login.html">Müşteri Girişi</a>
 </body>
 </html>
