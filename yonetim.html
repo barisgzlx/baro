@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Yönetici Girişi</title>
+</head>
+<body>
+  <h2>🔐 Yönetici Girişi</h2>
+
+  <input type="text" id="admin" placeholder="Kullanıcı adı"><br><br>
+  <input type="password" id="sifre" placeholder="Şifre"><br><br>
+  <button onclick="adminLogin()">Giriş</button>
+
+  <script>
+    function adminLogin() {
+      const u = document.getElementById("admin").value;
+      const p = document.getElementById("sifre").value;
+
+      if (u === "barisgzl" && p === "Baro1453") {
+        window.location.href = "panel.html";
+      } else {
+        alert("Yetkisiz giriş!");
+      }
+    }
+  </script>
+</body>
+</html>
