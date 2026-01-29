@@ -98,14 +98,15 @@ function login() {
   const user = document.getElementById("username").value;
   const pass = document.getElementById("password").value;
 
-  // ÖRNEK kontrol (şimdilik sabit)
   if (user === "admin7" && pass === "1234") {
-    window.location.href = "panel.html"; // 🔥 ÖNEMLİ
+    localStorage.setItem("login", "ok");   // 🔒 giriş kaydı
+    window.location.href = "skin.html";   // 🎯 MÜŞTERİ SAYFASI
   } else {
-    alert("Kullanıcı adı veya şifre yanlış");
+    alert("Hatalı giriş");
   }
 }
 </script>
+
 
 </body>
 </html>
